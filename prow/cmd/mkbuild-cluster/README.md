@@ -72,9 +72,9 @@ You need to give the user access to pods in that cluster.
 
 ```sh
 # Create the pod-reader role
-kubectl create role pod-reader --verb=get --verb=list --verb=watch --resource=pods
+kubectl create clusterrole cluster-pod-admin --verb=get,list,watch,create,update,patch,delete --resource=pods
 # Give the user access to read pods. The user in this example is 'client'.
-kubectl create rolebinding pod-reader-binding --role=pod-reader --user=client
+kubectl create clusterrolebinding cluster-pod-admin-binding --clusterrole=cluster-pod-admin --user=client
 ```
 
 ### All options
